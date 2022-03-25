@@ -5,11 +5,13 @@ con = sqlite3.connect("customer.db")
 
 cur = con.cursor()
 
-# using doc string for readability
-cur.execute("""CREATE TABLE customers (
-    full_name text, 
-    email text
-    )""")
+init_customers = [
+    ('John Brown', 'JohnBro@gmail.com'),
+    ('James Blue', 'Blue93@yahoo.com'),
+    ('Mary Lorean', 'maryLor@gmail.com'),
+]
+
+cur.executemany("INSERT INTO customers VALUES (?,?)", init_customers)
 
 con.commit()
 
