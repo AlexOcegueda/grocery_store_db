@@ -1,3 +1,9 @@
+"""
+
+This program was created to test out functions with a dummy database. It includes functions
+to add random customers with an API and also to display the full customers table.
+
+"""
 import sqlite3
 import requests
 
@@ -5,6 +11,10 @@ import requests
 con = sqlite3.connect("customer.db")
 # cursor to make changes in database
 cur = con.cursor()
+
+__program_name__ = "Al-ex Grocery Mart"
+__author__ = 'Alex Ocegueda'
+__version__ = '1.0'
 
 
 def display_full_table():
@@ -35,7 +45,6 @@ def add_new_customer():
 
 
 def main():
-
     for _ in range(2):
         add_new_customer()
 
