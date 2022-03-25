@@ -5,13 +5,9 @@ con = sqlite3.connect("customer.db")
 
 cur = con.cursor()
 
-init_customers = [
-    ('John Brown', 'JohnBro@gmail.com'),
-    ('James Blue', 'Blue93@yahoo.com'),
-    ('Mary Lorean', 'maryLor@gmail.com'),
-]
+cur.execute("SELECT * FROM CUSTOMERS")
 
-cur.executemany("INSERT INTO customers VALUES (?,?)", init_customers)
+print(cur.fetchall())
 
 con.commit()
 
