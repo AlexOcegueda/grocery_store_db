@@ -17,14 +17,19 @@ __author__ = 'Alex Ocegueda'
 __version__ = '1.0'
 
 
-def display_full_table():
+def display_customers_table():
     """
 
     This shows everything that is store in the 'customers' database
 
     """
     cur.execute("SELECT * FROM customers")  # Retrieves everything from customers table
-    print(cur.fetchall())
+    
+    for customer in cur.fetchall():
+        full_name = customer[0]
+        email = customer[1]
+
+        print(f"{full_name} \t - \t {email}")
 
 
 def add_new_customer():
@@ -45,10 +50,8 @@ def add_new_customer():
 
 
 def main():
-    for _ in range(2):
-        add_new_customer()
-
-    display_full_table()
+ 
+    display_customers_table()
 
     con.commit()  # Commit changes in database
 
